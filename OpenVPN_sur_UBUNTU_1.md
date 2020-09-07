@@ -1,5 +1,5 @@
 # Installation et configuration d'un serveur OpenVPN sur UBUNTU
-=====================================================================
+==========================================================================
 
 On va faire installation et configuration OpenVPN serveur Ubuntu en 2 étapes.
 
@@ -66,13 +66,11 @@ Et puis il faut supprimer tous les anciens certificats  :
 
 <img src="/images/image45.png">
 
-On on va commencer crée les nouveaux certificats . Premierement on va
-creer   build-ca:
+On on va commencer crée les nouveaux certificats . Premierement on va creer   build-ca:
 
 ./build-ca
 
-Il faut confirme tout parce que tout les info utilisent de file
-précédent
+Il faut confirme tout parce que tout les info utilisent de file précédent
 
 <img src="/images/image20.png">
 
@@ -82,8 +80,7 @@ Après on va créer key-server :
 
 <img src="/images/image29.png">
 
-Ensuite, nous pouvons générer une signature HMAC pour renforcer les
-capacités de vérification d’intégrité TLS du serveur:
+Ensuite, nous pouvons générer une signature HMAC pour renforcer les capacités de vérification d’intégrité TLS du serveur:
 
 openvpn --genkey --secret keys/ta.key
 
@@ -107,8 +104,7 @@ generate keys, génération peux prendre le temps
 
 <img src="/images/image30.png">
 
-Le serveur a également besoin d'un fichier de paramètres DH. Cela peut
-être créé en utilisant OpenSSL:
+Le serveur a également besoin d'un fichier de paramètres DH. Cela peut être créé en utilisant OpenSSL:
 
 openssl dhparam -out dh2048.pem 2048
 
@@ -125,8 +121,7 @@ cd ~/openvpn-ca/keys
 cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn
 
 gunzip -c
-/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz |
-sudo tee /etc/openvpn/server.conf
+/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf
 
 <img src="/images/image15.png">
 
@@ -136,7 +131,7 @@ sudo tee /etc/openvpn/server.conf
 
 Il faut supprimer  “;” Pour activer la ligne tls-auth:
 
-tls-auth ta.key 0 \# This file is secret
+tls-auth ta.key 0 
 
 cipher AES-128-CBC
 
@@ -224,8 +219,7 @@ DEFAULT\_FORWARD\_POLICY="ACCEPT"
 
 <img src="/images/image24.png">
 
-On va ouvrir les ports 1194/udp et OpenSSH (je vais utiliser port par
-défaut)
+On va ouvrir les ports 1194/udp et OpenSSH (je vais utiliser port par défaut)
 
 ufw allow 1194/udp && ufw allow OpenSSH
 
@@ -265,15 +259,13 @@ systemctl status openvpn@server
 
 <img src="/images/image36.png">
 
-Pour vérification tun0 disponibilité de l'interface OpenVPN il faut
-faire:
+Pour vérification tun0 disponibilité de l'interface OpenVPN il faut faire:
 
  ip addr show tun0
 
 <img src="/images/image7.png">
 
-SI openvpn ne marche pas essayer de faire restart openvpn ou faire
-restart serveur au complet.
+SI openvpn ne marche pas essayer de faire restart openvpn ou faire restart serveur au complet.
 
 service openvpn restart
 
@@ -310,8 +302,7 @@ On va changer base.conf:
 
 vim \~/ccd/base.conf
 
-Il faut mettre IP publique de votre serveur et port (comme pendant
-configuration serveur):
+Il faut mettre IP publique de votre serveur et port (comme pendant configuration serveur):
 
 <img src="/images/image23.png">
 
@@ -319,9 +310,7 @@ On utilise protocol UDP pour activer ce protocol il faut supprimer “;”:
 
 <img src="/images/image26.png">
 
-Pour le client Windows on active user nobody et group nogroup (il faut
-supprimer “;”), mais si vous utiliser comme client openvpn  Linux, il
-faut laisser cela inactive:
+Pour le client Windows on active user nobody et group nogroup (il faut supprimer “;”), mais si vous utiliser comme client openvpn  Linux, il faut laisser cela inactive:
 
 <img src="/images/image6.png">
 
@@ -337,15 +326,11 @@ et key-direction 1 (parce que c’est client, pour serveur on a utilisé 0)
 
 <img src="/images/image1.png">
 
-Pour faire configuration client on peut utiliser  script ou faire
-fichier manuellement.Je vais montrer deux possibilité :)
+Pour faire configuration client on peut utiliser  script ou faire fichier manuellement.Je vais montrer deux possibilité :)
 
-Pour configuration client avec script vous devez devez suivre ces
-étapes:
+Pour configuration client avec script vous devez devez suivre ces étapes:
 
-1.  Création d'un script de génération de configuration (vous pouvez
-    aussi télécharger ce fichier
-    [ici](hhttps://github.com/olexdziuba/vpn/blob/master/make_config.sh&sa=D&ust=1599441183299000&usg=AOvVaw2oN2kFmCdveUgLUvUL5rM2))
+1.  Création d'un script de génération de configuration, vous pouvez aussi télécharger ce fichier [ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh)
 
 vim \~/ccd/make\_config.sh
 
@@ -393,7 +378,7 @@ chmod 700 \~/ccd/make\_config.sh
 
 <img src="/images/image8.png">
 
-​3. Générer un fichier de configuration client
+3. Générer un fichier de configuration client
 
 cd \~/ccd
 
@@ -411,16 +396,9 @@ Il faut vérifier ce file, il faut ajouter remote avant adresse IP:
 
 <img src="/images/image34.png">
 
-Après on copier ce file sur ordinateur de client . Sur ordinateur avec
-Windows il faut installer
-[OpenVPN](https://openvpn.net/community-downloads/&sa=D&ust=1599441183308000&usg=AOvVaw39D_ZVuJ_mmEa__34jTmCE),
-ajouter nouveau client. Aussi il faut exécuter openvpn comme
-administrateut ("run as admin"). Si il connection bloquer, c’est bonne
-idée de lire logfile :)
+Après on copier ce file sur ordinateur de client . Sur ordinateur avec Windows il faut installer [OpenVPN](https://openvpn.net/community-downloads/), ajouter nouveau client. Aussi il faut exécuter openvpn comme administrateut ("run as admin"). Si il connection bloquer, c’est bonne idée de lire logfile :)
 
-Et voilà, on a connecté. Je mesure vitesse internet avec speedtest’ ping
-grand et vitesse 10 Mbps upload et download, mais c’est correct, parce
-que le serveur a ces restrictions.
+Et voilà, on a connecté. Je mesure vitesse internet avec speedtest’ ping grand et vitesse 10 Mbps upload et download, mais c’est correct, parce que le serveur a ces restrictions.
 
 \
 <img src="/images/image41.png">
