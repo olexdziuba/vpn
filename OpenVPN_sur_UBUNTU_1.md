@@ -8,10 +8,10 @@ Dans le premier étape on va installer et configurer OpenVPN serveur, créer 1 c
 Dans le deuxième étape on va créer le deuxieme client manuellement et utiliser ce client pour connecter l'ordinateur avec Linux dans le réseau VPN en utilisant linge de commande.
 Après, parce que les 2 ordinateurs (Windows et Linux) vont être dans le même réseau virtuel on va utiliser l'ordinateur Windows pour acceder à lordinateur Linux en ssh. 
 
-Aujourd'hui je vais faire première étape.
+Aujourd'hui je vais faire le première étape.
 
-Tout d’abord je vais installer le serveur OpenVPN sur [VPS](https://serverum.com/virtual-servers) avec 1 GB RAM, 1 CPU et 10 GB HDD et seulement 10 Mbit réseau  qui coûte 
-seulement  1\$ par mois. Je vais créer 3 utilisateur VPN. Parce que c’est seulement projet pour test, je vais faire login comme root.
+Tout d’abord, je vais installer le serveur OpenVPN sur [VPS](https://serverum.com/virtual-servers) avec 1 GB RAM, 1 CPU et 10 GB HDD et seulement 10 Mbit réseau qui coûte 
+juste 1\$ par mois. Je vais créer 3 utilisateur VPN. Parce que c’est seulement projet pour test, je vais faire login comme root.
 
 * * * * *
 ### L’installation les logicieles : 
