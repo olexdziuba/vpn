@@ -91,17 +91,17 @@ openvpn --genkey --secret keys/ta.key
 
 * * * * *
 
-### Générez un certificat client et une paire de clés: 
+### Générez un certificat client et une paire de clés (toujours no password): 
 
-./build-key client1  no pass
+./build-key client1  
 
-./build-key client2 no pass
+./build-key client2 
 
-./build-key client3 no pass
+./build-key client3 
 
 <img src="/images/image28.png">
 
-generate keys, génération peux prendre le temps
+Pour generer keys il faut exécuter: 
 
 ./build-dh
 
