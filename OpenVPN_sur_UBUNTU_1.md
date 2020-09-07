@@ -13,22 +13,24 @@ Aujourd'hui je  vais faire première étape.
 Tout d’abord je vais installer le serveur OpenVPN sur [VPS](https://serverum.com/virtual-servers) avec 1 GB RAM, 1 CPU et 10 GB HDD et seulement 10 Mbit réseau  qui coûte 
 seulement  1\$ par mois. Je vais créer 3 utilisateur VPN. Parce que c’est seulement projet pour test, je vais faire login comme root.
 
+* * * * *
 ### L’installation les logicieles : 
 
 Il faut installer:
 
 -   openvpn
 -   openssl
--   easy-rsa iptables et
+-   easy-rsa iptables
 -   bash-completion
 
 apt-get install openvpn openssl easy-rsa iptables bash-completion -y
 
 <img src="/images/image25.png">
 
+* * * * *
 ### Préparation les  variables pour génération les clés: 
 
-Avant création, il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
+Premierement il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
 
 make-cadir ~/openvpn-ca
 
@@ -46,12 +48,13 @@ ls -l
 
 <img src="/images/image11.png">
 
-On commence la rédaction vars, il faut ouvrir vars et remplir les champs suivants:
+On commence la rédaction fichier  vars, il faut ouvrir vars et remplir les champs suivants:
 
 vim vars
 
 <img src="/images/image37.png">
 
+* * * * *
 ### Génération des certificats et clés du serveur: 
 
 Après il faut exécuter:
@@ -110,6 +113,7 @@ openssl dhparam -out dh2048.pem 2048
 
 <img src="/images/image3.png">
 
+* * * * *
 ### Configurez le service OpenVPN. 
 
 Il faut  copier les fichiers dans /etc/openvpn
@@ -125,6 +129,7 @@ gunzip -c
 
 <img src="/images/image15.png">
 
+* * * * *
 ### Configurer la configuration OpenVPN 
 
  vim /etc/openvpn/server.conf
@@ -151,6 +156,7 @@ push "redirect-gateway def1 bypass-dhcp"
 
 <img src="/images/image38.png">
 
+* * * * *
 ### Configurer la configuration réseau de votre serveur 
 
 Autorisation de transfert IP:
@@ -175,6 +181,7 @@ echo 1 >> /proc/sys/net/ipv4/conf/all/forwarding
 
 <img src="/images/image32.png">
 
+* * * * *
 ### Configurer les règles UFW pour masquer les connexions client 
 
 Vérification carte réseau:
@@ -243,7 +250,8 @@ iptables -L -t nat
 
 <img src="/images/image46.png"> 
 
-###  
+
+* * * * *
 
 ### Activer le service OpenVPN 
 
@@ -275,8 +283,9 @@ Si il y a le problème il faut regarder log:
 
 tail -f /var/log/syslog
 
-Si tout fonctionne bien, passez à l'étape suivante :)
+Si tout fonctionne bien, passe à l'étape suivante :)
 
+* * * * *
 ### Créer une configuration client 
 
 Premièrement on va faire création dossier ccd/files pour clients:
