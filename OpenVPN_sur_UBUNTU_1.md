@@ -1,13 +1,12 @@
 # Installation et configuration d'un serveur OpenVPN sur UBUNTU
-=============================================================
+=====================================================================
 
 On va faire installation et configuration OpenVPN serveur Ubuntu en 2 étapes.
 
- Dans le premier on va installer et configurer OpenVPN server créer 1 client avec script et utiliser premiere client pour connecter à VPN .
+Dans le premier on va installer et configurer OpenVPN server créer 1 client avec script et utiliser premiere client pour connecter à VPN .
 
 Dans le deuxième  on va créer deuxieme  client manuellement et connecter ordinateur avec Linux dans le réseau VPN en utilisant linge de commande.
-Aussi, parce que 2 ordinateurs (Windows et linux) va être dans le même
-réseau virtuel on va connecter  de Windows à Linux en ssh.
+Aussi, parce que 2 ordinateurs (Windows et linux) va être dans le même réseau virtuel on va connecter  de Windows à Linux en ssh.
 
 Aujourd'hui je  vais faire première étape.
 
@@ -29,27 +28,25 @@ apt-get install openvpn openssl easy-rsa iptables bash-completion -y
 
 ### Préparation les  variables pour génération les clés: 
 
-Avant création, il faut configurer  CA Directory: copier easy-rsa dans
-\~/openvpn-ca
+Avant création, il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
 
-make-cadir \~/openvpn-ca
+make-cadir ~/openvpn-ca
 
 <img src="/images/image10.png">
 
 après on va aller dans ce dossier:
 
-cd \~/openvpn-ca
+cd ~/openvpn-ca
 
 <img src="/images/image33.png"> 
 
-Vérification \~/openvpn-ca
+Vérification ~/openvpn-ca
 
 ls -l
 
 <img src="/images/image11.png">
 
-On commence la rédaction vars, il faut ouvrir vars et remplir les champs
-suivants:
+On commence la rédaction vars, il faut ouvrir vars et remplir les champs suivants:
 
 vim vars
 
@@ -119,9 +116,9 @@ openssl dhparam -out dh2048.pem 2048
 
 ### Configurez le service OpenVPN. 
 
-Il faut  copier les fichiers dans / etc / openvpn
+Il faut  copier les fichiers dans /etc/openvpn
 
-cd \~/openvpn-ca/keys
+cd ~/openvpn-ca/keys
 
 <img src="/images/image14.png">
 
@@ -167,7 +164,7 @@ Configuration
 
 vim /etc/sysctl.conf
 
-Activer: net.ipv4.ip\_forward=1
+Activer: net.ipv4.ip_forward=1
 
 <img src="/images/image17.png">
 
@@ -179,7 +176,7 @@ sudo sysctl -p
 
 Il faut activer forwarding:
 
-echo 1 \>\> /proc/sys/net/ipv4/conf/all/forwarding
+echo 1 >> /proc/sys/net/ipv4/conf/all/forwarding
 
 <img src="/images/image32.png">
 
