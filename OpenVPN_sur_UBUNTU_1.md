@@ -1,9 +1,9 @@
 # Installation et configuration d'un serveur OpenVPN sur UBUNTU
-==========================================================================
+======================================================================================
 
-On va faire installation et configuration OpenVPN serveur Ubuntu en 2 étapes.
+On va faire l'installation et configuration OpenVPN sur le serveur Ubuntu en 2 étapes.
 
-Dans le premier on va installer et configurer OpenVPN server créer 1 client avec script et utiliser premiere client pour connecter à VPN .
+Dans le premier on va installer et configurer OpenVPN server, créer 1 client avec script et utiliser premiere client pour connecter à VPN .
 
 Dans le deuxième  on va créer deuxieme  client manuellement et connecter ordinateur avec Linux dans le réseau VPN en utilisant linge de commande.
 Aussi, parce que 2 ordinateurs (Windows et linux) va être dans le même réseau virtuel on va connecter  de Windows à Linux en ssh.
