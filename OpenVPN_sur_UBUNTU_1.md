@@ -38,19 +38,19 @@ Premièrement il faut configurer CA Directory: créer  ~/openvpn-ca et copier  
 
 <img src="/images/image10.png">
 
-après on va aller dans ce dossier:
+Après on va aller dans ce dossier:
 
 *cd ~/openvpn-ca*
 
 <img src="/images/image33.png"> 
 
-Vérification ~/openvpn-ca
+On va verifier le contenu ~/openvpn-ca 
 
 *ls -l*
 
 <img src="/images/image11.png">
 
-On commence la rédaction fichier  vars, il faut ouvrir vars et remplir les champs suivants:
+On commence la rédaction du fichier vars. Il faut ouvrir vars et remplir les champs suivants:
 
 *vim vars*
 
@@ -61,19 +61,19 @@ On commence la rédaction fichier  vars, il faut ouvrir vars et remplir les cham
 
 Après il faut exécuter:
 
-source vars
+*source vars*
 
 <img src="/images/image2.png">
 
 Et puis il faut supprimer tous les anciens certificats  :
 
-./clean-all
+*./clean-all*
 
 <img src="/images/image45.png">
 
-On on va commencer crée les nouveaux certificats . Premierement on va creer   build-ca:
+On on va commencer crée les nouveaux certificats . Premierement on va creer build-ca:
 
-./build-ca
+*./build-ca*
 
 Il faut confirme tout parce que tout les info utilisent de file précédent
 
@@ -81,13 +81,13 @@ Il faut confirme tout parce que tout les info utilisent de file précédent
 
 Après on va créer key-server :
 
-./build-key-server server
+*./build-key-server server*
 
 <img src="/images/image29.png">
 
 Ensuite, nous pouvons générer une signature HMAC pour renforcer les capacités de vérification d’intégrité TLS du serveur:
 
-openvpn --genkey --secret keys/ta.key
+*openvpn --genkey --secret keys/ta.key*
 
 <img src="/images/image31.png">
 
@@ -95,9 +95,9 @@ openvpn --genkey --secret keys/ta.key
 
 ### Générez un certificat client et une paire de clés (toujours no password): 
 
-./build-key client1  
+*./build-key client1* 
 
-./build-key client2 
+*./build-key client2*
 
 ./build-key client3 
 
