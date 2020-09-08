@@ -23,18 +23,18 @@ Il faut installer:
 -   easy-rsa iptables
 -   bash-completion
 
-Il faut executer le commande suivante:
+Il faut exécuter la commande suivante:
 
-apt-get install openvpn openssl easy-rsa iptables bash-completion -y
+*apt-get install openvpn openssl easy-rsa iptables bash-completion -y*
 
 <img src="/images/image25.png">
 
 * * * * *
 ### Préparation des  variables pour génération des clés: 
 
-Premièrement il faut configurer CA Directory: copier easy-rsa dans ~/openvpn-ca
+Premièrement il faut configurer CA Directory: copier *easy-rsa* dans *~/openvpn-ca*
 
-** make-cadir ~/openvpn-ca **
+*make-cadir ~/openvpn-ca*
 
 <img src="/images/image10.png">
 
