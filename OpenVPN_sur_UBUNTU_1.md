@@ -343,21 +343,37 @@ Pour configuration client avec script vous devez devez suivre ces étapes:
  
 
 *\#!/bin/bash*
+
 *\# First argument: Client identifier*
+
 *KEY\_DIR=\~/openvpn-ca/keys*
+
 *OUTPUT\_DIR=\~/ccd/files*
+
 *BASE\_CONFIG=\~/ccd/base.conf*
+
 *cat \${BASE\_CONFIG} \\*
+
 *\<(echo -e '\<ca\>') \\*
+
 *\${KEY\_DIR}/ca.crt \\*
+
 *\<(echo -e '\</ca\>\\n\<cert\>') \\*
+
 *\${KEY\_DIR}/\${1}.crt \\*
+
 *\<(echo -e '\</cert\>\\n\<key\>') \\*
+
 *./make\_config.sh client*
+
 *\<(echo -e '\</key\>\\n\<tls-auth\>') \\*
+
 *\${KEY\_DIR}/ta.key \\*
+
 *\<(echo -e '\</tls-auth\>') \\*
+
 *\> \${OUTPUT\_DIR}/\${1}.ovpn*
+
 *<img src="/images/image4.png">*
 
 2.  Changer permission du fichier:
