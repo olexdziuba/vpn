@@ -302,9 +302,9 @@ Il faut copier example file dans dossier de client:
 
 <img src="/images/image42.png">
 
-On va changer base.conf:
+Apres on va changer base.conf:
 
-vim \~/ccd/base.conf
+*vim \~/ccd/base.conf*
 
 Il faut mettre IP publique de votre serveur et port (comme pendant configuration serveur):
 
@@ -336,67 +336,51 @@ Pour configuration client avec script vous devez devez suivre ces étapes:
 
 1.  Création d'un script de génération de configuration, vous pouvez aussi télécharger ce fichier [ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh)
 
-vim \~/ccd/make\_config.sh
+*vim \~/ccd/make\_config.sh*
 
 À l'intérieur, collez le script suivant:
 
  
 
-\#!/bin/bash
-
-\# First argument: Client identifier
-
-KEY\_DIR=\~/openvpn-ca/keys
-
-OUTPUT\_DIR=\~/ccd/files
-
-BASE\_CONFIG=\~/ccd/base.conf
-
-cat \${BASE\_CONFIG} \\
-
-    \<(echo -e '\<ca\>') \\
-
-    \${KEY\_DIR}/ca.crt \\
-
-    \<(echo -e '\</ca\>\\n\<cert\>') \\
-
-    \${KEY\_DIR}/\${1}.crt \\
-
-    \<(echo -e '\</cert\>\\n\<key\>') \\
-
-    ./make\_config.sh client
-
-    \<(echo -e '\</key\>\\n\<tls-auth\>') \\
-
-    \${KEY\_DIR}/ta.key \\
-
-    \<(echo -e '\</tls-auth\>') \\
-
-    \> \${OUTPUT\_DIR}/\${1}.ovpn
-
-<img src="/images/image4.png">
+*\#!/bin/bash*
+*\# First argument: Client identifier*
+*KEY\_DIR=\~/openvpn-ca/keys*
+*OUTPUT\_DIR=\~/ccd/files*
+*BASE\_CONFIG=\~/ccd/base.conf*
+*cat \${BASE\_CONFIG} \\*
+*\<(echo -e '\<ca\>') \\*
+*\${KEY\_DIR}/ca.crt \\*
+*\<(echo -e '\</ca\>\\n\<cert\>') \\*
+*\${KEY\_DIR}/\${1}.crt \\*
+*\<(echo -e '\</cert\>\\n\<key\>') \\*
+*./make\_config.sh client*
+*\<(echo -e '\</key\>\\n\<tls-auth\>') \\*
+*\${KEY\_DIR}/ta.key \\*
+*\<(echo -e '\</tls-auth\>') \\*
+*\> \${OUTPUT\_DIR}/\${1}.ovpn*
+*<img src="/images/image4.png">*
 
 2.  Changer permission du fichier:
 
-chmod 700 \~/ccd/make\_config.sh
+*chmod 700 \~/ccd/make\_config.sh*
 
 <img src="/images/image8.png">
 
 3. Générer un fichier de configuration client
 
-cd \~/ccd
+*cd \~/ccd*
 
-./make\_config.sh client1
+*./make\_config.sh client1*
 
 <img src="/images/image13.png">
 
-On verifier:
+On verifie si fichier crée:
 
-ls \~/ccd/files
+*ls \~/ccd/files*
 
 <img src="/images/image19.png">
 
-Il faut vérifier ce file, il faut ajouter remote avant adresse IP:
+Il faut aussi vérifier ce file, il faut ajouter *remote* avant adresse IP:
 
 <img src="/images/image34.png">
 
@@ -404,5 +388,5 @@ Après on copier ce file sur ordinateur de client . Sur ordinateur avec Windows 
 
 Et voilà, on a connecté. Je mesure vitesse internet avec speedtest’ ping grand et vitesse 10 Mbps upload et download, mais c’est correct, parce que le serveur a ces restrictions.
 
-\
+
 <img src="/images/image41.png">
