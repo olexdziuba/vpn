@@ -326,15 +326,16 @@ Aussi on va ajouter les lignes prochaines:
 
 <img src="/images/image44.png">
 
-Aussi il faut ajouter le key-direction 1 (parce que c’est client, pour serveur on a utilisé 0)
+Aussi il faut ajouter la key-direction 1 (parce que c’est un client, pour serveur on a utilisé 0):
 
 <img src="/images/image1.png">
 
-Pour faire configuration client on peut utiliser  script ou faire fichier manuellement.Je vais montrer deux possibilité :)
+Pour faire la configuration  du client on peut utiliser un script ou faire un fichier manuellement. Je vais montrer deux possibilités :)
 
-Pour configuration client avec script vous devez devez suivre ces étapes:
+Pour la configuration du client avec le script vous devez suivre ces étapes:
 
-1.  Création d'un script de génération de configuration, vous pouvez aussi télécharger ce fichier [ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh)
+#####1.  Création d'un script de génération de configuration.
+Vous pouvez aussi télécharger ce fichier [ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh)
 
 *vim \~/ccd/make\_config.sh*
 
