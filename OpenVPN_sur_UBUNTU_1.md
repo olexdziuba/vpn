@@ -335,15 +335,11 @@ Pour faire la configuration  du client on peut utiliser un script ou faire un f
 Pour la configuration du client avec le script vous devez suivre ces étapes:
 
 ##### 1.  Création d'un script de génération de configuration.
-Vous pouvez soit télécharger ce script [d'ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh),
-
-soit le créer manuellement:
-
+Vous pouvez soit télécharger ce script [d'ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh), soit le créer manuellement.
+Commencer par:
 *vim \~/ccd/make\_config.sh*
 
 À l'intérieur, collez le script suivant:
-
- 
 
 *\#!/bin/bash*
 
@@ -379,13 +375,13 @@ soit le créer manuellement:
 
 <img src="/images/image4.png">
 
-2.  Changer permission du fichier:
+##### 2.  Changer la permission du fichier:
 
 *chmod 700 \~/ccd/make\_config.sh*
 
 <img src="/images/image8.png">
 
-3. Générer un fichier de configuration client
+##### 3. Générer un fichier de configuration client
 
 *cd \~/ccd*
 
@@ -393,19 +389,19 @@ soit le créer manuellement:
 
 <img src="/images/image13.png">
 
-On verifie si fichier crée:
+On verifie si le fichier est crée:
 
 *ls \~/ccd/files*
 
 <img src="/images/image19.png">
 
-Il faut aussi vérifier ce file, il faut ajouter *remote* avant adresse IP:
+Il faut aussi vérifier ce file, il faut ajouter *remote* avant l'adresse IP:
 
 <img src="/images/image34.png">
 
-Après on copier ce file sur ordinateur de client . Sur ordinateur avec Windows il faut installer [OpenVPN](https://openvpn.net/community-downloads/), ajouter nouveau client. Aussi il faut exécuter openvpn comme administrateut ("run as admin"). Si il connection bloquer, c’est bonne idée de lire logfile :)
+Après on copie ce file sur l'ordinateur de client. Sur l'ordinateur avec Windows il faut installer [OpenVPN](https://openvpn.net/community-downloads/) et ajouter nouveau client. Aussi il faut exécuter OpenVPN comme administrateur ("run as admin"). S'il la connection est bloqué, c’est un bonne idée de lire le logfile :)
 
-Et voilà, on a connecté. Je mesure vitesse internet avec speedtest’ ping grand et vitesse 10 Mbps upload et download, mais c’est correct, parce que le serveur a ces restrictions.
+Et voilà, on a connecté. Je mesure la vitesse d'internet avec speedtest. Le ping est grand et vitesse 10 Mbps upload et download, mais c’est correct, parce que le serveur a ses restrictions.
 
 
 <img src="/images/image41.png">
