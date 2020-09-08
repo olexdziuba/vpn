@@ -67,17 +67,17 @@ Après il faut exécuter:
 
 <img src="/images/image2.png">
 
-Et puis il faut supprimer tous les anciens certificats  :
+Et puis il faut supprimer tous les anciens certificats:
 
 *./clean-all*
 
 <img src="/images/image45.png">
 
-On on va commencer crée les nouveaux certificats . Premierement on va creer build-ca:
+On va commencer a crée les nouveaux certificats. Premièrement on va creer build-ca:
 
 *./build-ca*
 
-Il faut confirme tout parce que tout les info utilisent de file précédent
+Il faut confirmer tout, parce que toutes les infos on a deja ecrit dans le vars
 
 <img src="/images/image20.png">
 
@@ -101,7 +101,7 @@ Ensuite, nous pouvons générer une signature HMAC pour renforcer les capacités
 
 *./build-key client2*
 
-./build-key client3 
+*./build-key client3*
 
 <img src="/images/image28.png">
 
