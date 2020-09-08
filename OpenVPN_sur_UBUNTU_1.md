@@ -50,9 +50,11 @@ On va verifier le contenu ~/openvpn-ca
 
 <img src="/images/image11.png">
 
-On commence la rédaction du fichier vars. Il faut ouvrir vars et remplir les champs suivants:
+On commence la rédaction du fichier vars. Il faut ouvrir vars: 
 
 *vim vars*
+
+On va remplir les champs suivants:
 
 <img src="/images/image37.png">
 
