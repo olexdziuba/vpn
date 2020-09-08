@@ -40,7 +40,7 @@ Premièrement il faut configurer CA Directory: copier *easy-rsa* dans *~/openvp
 
 après on va aller dans ce dossier:
 
-cd ~/openvpn-ca
+*cd ~/openvpn-ca*
 
 <img src="/images/image33.png"> 
 
