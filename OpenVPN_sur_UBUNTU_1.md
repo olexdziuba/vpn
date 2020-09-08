@@ -334,7 +334,7 @@ Pour faire la configuration  du client on peut utiliser un script ou faire un f
 
 Pour la configuration du client avec le script vous devez suivre ces étapes:
 
-#####1.  Création d'un script de génération de configuration.
+##### 1.  Création d'un script de génération de configuration.
 Vous pouvez aussi télécharger ce fichier [ici](https://github.com/olexdziuba/vpn/blob/master/make_config.sh)
 
 *vim \~/ccd/make\_config.sh*
