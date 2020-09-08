@@ -139,7 +139,7 @@ On va ouvrir server.conf:
 
 *vim /etc/openvpn/server.conf*
 
-Il faut supprimer  “;” Pour activer la ligne tls-auth:
+Il faut supprimer  “;” pour activer la ligne tls-auth:
 
 *tls-auth ta.key 0*
 
@@ -155,7 +155,7 @@ Sous “cipher AES-128-CBC” il faut ajouter:
 
 <img src="/images/image35.png">
 
-Aussi il faut supprimer “;” Pour décommenter la ligne:
+Aussi il faut supprimer “;” pour décommenter la ligne:
 
 *push "redirect-gateway def1 bypass-dhcp"*
 
@@ -164,7 +164,7 @@ Aussi il faut supprimer “;” Pour décommenter la ligne:
 * * * * *
 ### Configurer la configuration réseau de votre serveur 
 
-Premièrement on va configurer le transfert IP en redaction:
+Premièrement, on va configurer le transfert IP en redaction:
 
 *vim /etc/sysctl.conf*
 
@@ -172,7 +172,7 @@ Il faut activer: *net.ipv4.ip_forward=1*
 
 <img src="/images/image17.png">
 
-Pour appliquer changement il faut exécuter:
+Pour appliquer le changement il faut exécuter:
 
 *sudo sysctl -p*
 
@@ -187,17 +187,17 @@ Pour activer forwarding il faut exécuter:
 * * * * *
 ### Configurer les règles UFW pour masquer les connexions client 
 
-Premièrement on va vérifier le carte réseau de notre serveur:
+Premièrement, on va vérifier la carte réseau de notre serveur:
 
 *ip route | grep default*
 
 <img src="/images/image43.png">
 
-On va ajouter dans before.rules:
+On va ouvrir before.rules:
 
 *vim /etc/ufw/before.rules*
 
-Les lignes suivantes:
+Et on va ajouter les lignes suivantes:
 
 *\# START OPENVPN RULES*
 *\# NAT table rules*
@@ -214,7 +214,7 @@ Pour changer les règles Firewall il faut corriger: /etc/default/ufw
 
 *vim /etc/default/ufw*
 
-Il faut change:
+Il faut changer:
 
 *DEFAULT\_FORWARD\_POLICY="DROP"* to
 
@@ -222,7 +222,7 @@ Il faut change:
 
 <img src="/images/image24.png">
 
-On va ouvrir les ports 1194/udp et OpenSSH (je vais utiliser port par défaut)
+On va ouvrir les ports 1194/udp et OpenSSH (je vais utiliser le port par défaut)
 
 *ufw allow 1194/udp && ufw allow OpenSSH*
 
@@ -234,7 +234,7 @@ Pour appliquer les changement il faut redémarrer FW:
 
 <img src="/images/image18.png">
 
-Pour verifier status firewall il faut exécuter:
+Pour verifier le status de firewall il faut exécuter:
 
 *ufw status*
 
@@ -251,40 +251,40 @@ Pour verifier NAT il faut exécuter:
 
 ### Activer le service OpenVPN 
 
-Si vérification passé bien on va démarrer openVPN:
+Si la vérification passe bien on va démarrer openVPN en exécutant:
 
 *systemctl start openvpn@server*
 
 <img src="/images/image22.png">
 
-Pour vérifier si il démarre bien il faut exécuter:
+Pour vérifier s'il démarre bien il faut exécuter:
 
 *systemctl status openvpn@server*
 
 <img src="/images/image36.png">
 
-Pour vérification tun0 disponibilité de l'interface OpenVPN il faut faire:
+Pour vérification  disponibilité de tun0 dans l'interface OpenVPN il faut faire:
 
  *ip addr show tun0*
 
 <img src="/images/image7.png">
 
-SI openvpn ne marche pas, essayez de faire restart openvpn ou faire restart serveur au complet.
+Si OpenVPN ne marche pas, essayez de faire restart d'OpenVPN ou faire restart du serveur au complet.
 
 *service openvpn restart*
 
 <img src="/images/image9.png">
 
-Si il y a le problème il faut regarder log:
+S'il y a le problème il faut regarder le log:
 
 *tail -f /var/log/syslog*
 
 Si tout fonctionne bien, passe à l'étape suivante :)
 
 * * * * *
-### Créer une configuration client 
+### Créer une configuration de client 
 
-Premièrement on va faire création dossier ccd/files pour clients:
+Premièrement on va créer un dossier ccd/files pour clients:
 
 *mkdir -p \~/ccd/files*
 
@@ -302,31 +302,31 @@ Il faut copier example file dans dossier de client:
 
 <img src="/images/image42.png">
 
-Apres on va changer base.conf:
+Après on va changer base.conf en exécutant:
 
 *vim \~/ccd/base.conf*
 
-Il faut mettre IP publique de votre serveur et port (comme pendant configuration serveur):
+Il faut taper IP publique de votre serveur et port (comme pendant configuration serveur):
 
 <img src="/images/image23.png">
 
-On utilise protocol UDP pour activer ce protocol il faut supprimer “;”:
+On utilise protocol UDP. Pour activer ce protocol il faut supprimer “;”:
 
 <img src="/images/image26.png">
 
-Pour le client Windows on active user nobody et group nogroup (il faut supprimer “;”), mais si vous utiliser comme client openvpn  Linux, il faut laisser cela inactive:
+Pour le client Windows on active user nobody et group nogroup (il faut supprimer “;”), mais si vous utiliser comme client OpenVPN Linux, il faut laisser cela inactive:
 
 <img src="/images/image6.png">
 
-Il faut  désactiver prochaines lignes (ajouter pour “;”):
+Il faut désactiver prochaines lignes (ajouter “;”):
 
 <img src="/images/image16.png">
 
-Aussi on va ajouter prochaines lignes:
+Aussi on va ajouter les lignes prochaines:
 
 <img src="/images/image44.png">
 
-et key-direction 1 (parce que c’est client, pour serveur on a utilisé 0)
+Aussi il faut ajouter le key-direction 1 (parce que c’est client, pour serveur on a utilisé 0)
 
 <img src="/images/image1.png">
 
