@@ -32,7 +32,7 @@ Il faut exécuter la commande suivante:
 * * * * *
 ### Préparation des  variables pour génération des clés: 
 
-Premièrement il faut configurer CA Directory: copier *easy-rsa* dans *~/openvpn-ca*
+Premièrement il faut configurer CA Directory: creer  ~/openvpn-ca et coier  easy-rsa dans ce dossier
 
 *make-cadir ~/openvpn-ca*
 
