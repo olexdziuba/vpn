@@ -120,7 +120,7 @@ Le serveur a également besoin d'un fichier de paramètres DH. Cela peut être c
 * * * * *
 ### Configurez le service OpenVPN. 
 
-Il faut  copier les fichiers dans /etc/openvpn
+Il faut copier les fichiers dans /etc/openvpn en exécutant:
 
 *cd ~/openvpn-ca/keys*
 
@@ -135,121 +135,114 @@ Il faut  copier les fichiers dans /etc/openvpn
 * * * * *
 ### Configurer la configuration OpenVPN 
 
- vim /etc/openvpn/server.conf
+On va ouvrir server.conf:
+
+*vim /etc/openvpn/server.conf*
 
 Il faut supprimer  “;” Pour activer la ligne tls-auth:
 
-tls-auth ta.key 0 
+*tls-auth ta.key 0*
 
-cipher AES-128-CBC
+*cipher AES-128-CBC*
 
-user nobody
+*user nobody*
 
-group nogroup
+*group nogroup*
 
 Sous “cipher AES-128-CBC” il faut ajouter:
 
-auth SHA256
+*auth SHA256*
 
 <img src="/images/image35.png">
 
 Aussi il faut supprimer “;” Pour décommenter la ligne:
 
-push "redirect-gateway def1 bypass-dhcp"
+*push "redirect-gateway def1 bypass-dhcp"*
 
 <img src="/images/image38.png">
 
 * * * * *
 ### Configurer la configuration réseau de votre serveur 
 
-Autorisation de transfert IP:
+Premièrement on va configurer le transfert IP en redaction:
 
-Configuration
+*vim /etc/sysctl.conf*
 
-vim /etc/sysctl.conf
-
-Activer: net.ipv4.ip_forward=1
+Il faut activer: *net.ipv4.ip_forward=1*
 
 <img src="/images/image17.png">
 
-Pour appliquer changement :
+Pour appliquer changement il faut exécuter:
 
-sudo sysctl -p
+*sudo sysctl -p*
 
 <img src="/images/image21.png">
 
-Il faut activer forwarding:
+Pour activer forwarding il faut exécuter:
 
-echo 1 >> /proc/sys/net/ipv4/conf/all/forwarding
+*echo 1 >> /proc/sys/net/ipv4/conf/all/forwarding*
 
 <img src="/images/image32.png">
 
 * * * * *
 ### Configurer les règles UFW pour masquer les connexions client 
 
-Vérification carte réseau:
+Premièrement on va vérifier le carte réseau de notre serveur:
 
-ip route | grep default
+*ip route | grep default*
 
 <img src="/images/image43.png">
 
-On ajouter dans:
+On va ajouter dans before.rules:
 
-vim /etc/ufw/before.rules
+*vim /etc/ufw/before.rules*
 
-\# START OPENVPN RULES
+Les lignes suivantes:
 
-\# NAT table rules
-
-\*nat
-
-:POSTROUTING ACCEPT [0:0]
-
-\# Allow traffic from OpenVPN client to ens3
-
--A POSTROUTING -s 10.8.0.0/24 -o ens3 -j MASQUERADE
-
-COMMIT
-
-\# END OPENVPN RULES
+*\# START OPENVPN RULES*
+*\# NAT table rules*
+*\*nat*
+*:POSTROUTING ACCEPT [0:0]*
+*\# Allow traffic from OpenVPN client to ens3*
+*-A POSTROUTING -s 10.8.0.0/24 -o ens3 -j MASQUERADE*
+*COMMIT*
+*\# END OPENVPN RULES*
 
 <img src="/images/image12.png">
 
-Pour changer les règles Firewall il faut corriger:
+Pour changer les règles Firewall il faut corriger: /etc/default/ufw
 
-/etc/default/ufw
-
-vim /etc/default/ufw
+*vim /etc/default/ufw*
 
 Il faut change:
 
-DEFAULT\_FORWARD\_POLICY="DROP" to
+*DEFAULT\_FORWARD\_POLICY="DROP"* to
 
-DEFAULT\_FORWARD\_POLICY="ACCEPT"
+*DEFAULT\_FORWARD\_POLICY="ACCEPT"*
 
 <img src="/images/image24.png">
 
 On va ouvrir les ports 1194/udp et OpenSSH (je vais utiliser port par défaut)
 
-ufw allow 1194/udp && ufw allow OpenSSH
+*ufw allow 1194/udp && ufw allow OpenSSH*
 
 <img src="/images/image27.png">
 
 Pour appliquer les changement il faut redémarrer FW:
 
-ufw disable && ufw enable
+*ufw disable && ufw enable*
 
 <img src="/images/image18.png">
 
-Verification status firewall:
+Pour verifier status firewall il faut exécuter:
 
-ufw status
+*ufw status*
 
 <img src="/images/image5.png">
 
-Vérification NAT:
+Pour verifier NAT il faut exécuter:
 
-iptables -L -t nat
+*iptables -L -t nat*
 
 <img src="/images/image46.png"> 
 
@@ -260,31 +253,31 @@ iptables -L -t nat
 
 Si vérification passé bien on va démarrer openVPN:
 
-systemctl start openvpn@server
+*systemctl start openvpn@server*
 
 <img src="/images/image22.png">
 
 Pour vérifier si il démarre bien il faut exécuter:
 
-systemctl status openvpn@server
+*systemctl status openvpn@server*
 
 <img src="/images/image36.png">
 
 Pour vérification tun0 disponibilité de l'interface OpenVPN il faut faire:
 
- ip addr show tun0
+ *ip addr show tun0*
 
 <img src="/images/image7.png">
 
-SI openvpn ne marche pas essayer de faire restart openvpn ou faire restart serveur au complet.
+SI openvpn ne marche pas, essayez de faire restart openvpn ou faire restart serveur au complet.
 
-service openvpn restart
+*service openvpn restart*
 
 <img src="/images/image9.png">
 
 Si il y a le problème il faut regarder log:
 
-tail -f /var/log/syslog
+*tail -f /var/log/syslog*
 
 Si tout fonctionne bien, passe à l'étape suivante :)
 
@@ -293,20 +286,19 @@ Si tout fonctionne bien, passe à l'étape suivante :)
 
 Premièrement on va faire création dossier ccd/files pour clients:
 
-mkdir -p \~/ccd/files
+*mkdir -p \~/ccd/files*
 
 <img src="/images/image40.png">
 
-Changer permissions:
+Apres on va changer permissions:
 
-chmod 700 \~/ccd/files
+*chmod 700 \~/ccd/files*
 
 <img src="/images/image39.png">
 
-Copier example file dans dossier de client:
+Il faut copier example file dans dossier de client:
 
-cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf
-\~/ccd/base.conf
+*cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/ccd/base.conf*
 
 <img src="/images/image42.png">
 
