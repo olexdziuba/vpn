@@ -14,7 +14,7 @@ Tout d’abord, je vais installer le serveur OpenVPN sur [VPS](https://serverum.
 juste 1\$ par mois. Je vais créer 3 utilisateur VPN. Parce que c’est seulement projet pour test, je vais faire login comme root.
 
 * * * * *
-### L’installation les logicieles : 
+### L’installation des logicieles : 
 
 Il faut installer:
 
@@ -23,14 +23,16 @@ Il faut installer:
 -   easy-rsa iptables
 -   bash-completion
 
+Il faut executer le commande suivante:
+
 apt-get install openvpn openssl easy-rsa iptables bash-completion -y
 
 <img src="/images/image25.png">
 
 * * * * *
-### Préparation les  variables pour génération les clés: 
+### Préparation des  variables pour génération des clés: 
 
-Premierement il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
+Premièrement il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
 
 make-cadir ~/openvpn-ca
 
