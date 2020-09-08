@@ -374,7 +374,7 @@ Pour configuration client avec script vous devez devez suivre ces étapes:
 
 *\> \${OUTPUT\_DIR}/\${1}.ovpn*
 
-*<img src="/images/image4.png">*
+<img src="/images/image4.png">
 
 2.  Changer permission du fichier:
 
