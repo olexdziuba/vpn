@@ -32,7 +32,7 @@ apt-get install openvpn openssl easy-rsa iptables bash-completion -y
 * * * * *
 ### Préparation des  variables pour génération des clés: 
 
-Premièrement il faut configurer  CA Directory: copier easy-rsa dans ~/openvpn-ca
+Premièrement il faut configurer CA Directory: copier easy-rsa dans ~/openvpn-ca
 
 make-cadir ~/openvpn-ca
 
