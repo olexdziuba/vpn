@@ -32,7 +32,7 @@ Il faut exécuter la commande suivante:
 * * * * *
 ### Préparation des  variables pour génération des clés: 
 
-Premièrement il faut configurer CA Directory: creer  ~/openvpn-ca et coier  easy-rsa dans ce dossier
+Premièrement il faut configurer CA Directory: créer  ~/openvpn-ca et copier  easy-rsa dans ce dossier en utilisant:
 
 *make-cadir ~/openvpn-ca*
 
@@ -46,13 +46,13 @@ après on va aller dans ce dossier:
 
 Vérification ~/openvpn-ca
 
-ls -l
+*ls -l*
 
 <img src="/images/image11.png">
 
 On commence la rédaction fichier  vars, il faut ouvrir vars et remplir les champs suivants:
 
-vim vars
+*vim vars*
 
 <img src="/images/image37.png">
 
