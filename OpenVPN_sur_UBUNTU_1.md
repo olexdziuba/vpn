@@ -77,17 +77,17 @@ On va commencer a crée les nouveaux certificats. Premièrement on va creer buil
 
 *./build-ca*
 
-Il faut confirmer tout, parce que toutes les infos on a deja ecrit dans le vars
+Il faut confirmer tout, parce que toutes les infos on a déjà écrit dans le vars.
 
 <img src="/images/image20.png">
 
-Après on va créer key-server :
+Après on va créer key-server:
 
 *./build-key-server server*
 
 <img src="/images/image29.png">
 
-Ensuite, nous pouvons générer une signature HMAC pour renforcer les capacités de vérification d’intégrité TLS du serveur:
+Ensuite, on va générer une signature HMAC pour renforcer les capacités de vérification d’intégrité TLS du serveur:
 
 *openvpn --genkey --secret keys/ta.key*
 
@@ -107,13 +107,13 @@ Ensuite, nous pouvons générer une signature HMAC pour renforcer les capacités
 
 Pour generer keys il faut exécuter: 
 
-./build-dh
+*./build-dh*
 
 <img src="/images/image30.png">
 
 Le serveur a également besoin d'un fichier de paramètres DH. Cela peut être créé en utilisant OpenSSL:
 
-openssl dhparam -out dh2048.pem 2048
+*openssl dhparam -out dh2048.pem 2048*
 
 <img src="/images/image3.png">
 
@@ -122,14 +122,13 @@ openssl dhparam -out dh2048.pem 2048
 
 Il faut  copier les fichiers dans /etc/openvpn
 
-cd ~/openvpn-ca/keys
+*cd ~/openvpn-ca/keys*
 
 <img src="/images/image14.png">
 
-cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn
+*cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn*
 
-gunzip -c
-/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf
+*gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf*
 
 <img src="/images/image15.png">
 
