@@ -1,7 +1,7 @@
 Installation et configuration d'un serveur OpenVPN sur UBUNTU (partie 2/2) 
 ==========================================================================
 
-### Dans cet étape on va créer le deuxième et le troisième clients manuellement. Le deuxième client on va utiliser pour connecter le téléphone portable au réseau VPN, et le troisième client on va utiliser pour connecter l'ordinateur avec Linux dans le réseau VPN en utilisant une ligne de commande. Après, parce que les 2 ordinateurs (Windows et Linux) vont être dans le même réseau virtuel on va utiliser l'ordinateur Windows pour accéder à l'ordinateur Linux en ssh et sftp. {#h.vypyd1t497wt .c24}
+Dans cet étape on va créer le deuxième et le troisième clients manuellement. Le deuxième client on va utiliser pour connecter le téléphone portable au réseau VPN, et le troisième client on va utiliser pour connecter l'ordinateur avec Linux dans le réseau VPN en utilisant une ligne de commande. Après, parce que les 2 ordinateurs (Windows et Linux) vont être dans le même réseau virtuel on va utiliser l'ordinateur Windows pour accéder à l'ordinateur Linux en ssh et sftp. 
 
 Configuration manuelle pour les clients
 
