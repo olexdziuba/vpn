@@ -24,15 +24,15 @@ Premièrement il faut Installer OpenVPN sur votre téléphone. Après il faut t�
 
 On ouvre OpenVPN et choisi fichier client2.ovpn et clique sur Import
 
-<img src="/images2/image13.png">
+<img src="/images2/image13c.png">
 
 Si le fichier est correct, il faut choisir “Connect after import” et cliquer sur ADD:
 
-<img src="/images2/image9.png">
+<img src="/images2/image9c.png">
 
 Si tout est bien configuré - vous pouvez vous connecter:
 
-<img src="/images2/image4.png">
+<img src="/images2/image4c.png">
 
 ### Installation d’OpenVPN client sur Raspberry PI 
 
