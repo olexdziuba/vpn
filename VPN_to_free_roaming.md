@@ -22,11 +22,11 @@ Pour faire cela il faut entreprendre les étapes suivantes:
 
 Sur IPhone:
 
-![](images/image1.jpg)
+<img src="/images3/images/image1.jpg">
 
 Sur Android:
 
-![](images/image2.png)
+<img src="/images3/image2.png">
 
 Avant de quitter votre pays vous pouvez activer le Mode Avion pour couper le réseau cellulaire de votre téléphone (pour tout le voyage)
  activer le  Wi-Fi. Pour appeler dans les pays étrangers, il faut vous connecter au Wi-Fi et à la connection VPN. Pour l'opérateur de
