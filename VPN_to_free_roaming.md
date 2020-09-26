@@ -22,7 +22,7 @@ Pour faire cela il faut entreprendre les étapes suivantes:
 
 Sur IPhone:
 
-<img src="/images3/image1.jpg">
+<img src="/images3/image01.jpg">
 
 Sur Android:
 
